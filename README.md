@@ -2,47 +2,62 @@
 
 AirPlay Screen Mirroring receiver for Windows 10 and 11, built with C++ and Qt6.
 
-## Features
+## 🚀 Download & Jalankan Langsung (Tanpa Perlu Build)
 
-- High performance iOS screen mirroring over Wi-Fi
-- Configurable discovery name visible in iOS Control Center
-- Target frame rate selector (30 FPS / 60 FPS)
-- Latency profiles: Stable, Balanced, and Low Latency
-- Modern native desktop interface with system tray controls
-- Direct3D 11 and Direct3D 12 video renderer support
-- Autostart on Windows login option
-- Integrated Bluetooth LE discovery beacon support
+Untuk pengguna yang ingin langsung memakai aplikasi tanpa compile / build sendiri:
 
-## Prerequisites
+1. Buka halaman **[Releases](https://github.com/swavehz/swave-imirror/releases/latest)**.
+2. Download paket portable: **`swave-imirror-v1.0.0-windows-x64-portable.zip`**.
+3. Extract file `.zip` tersebut.
+4. Dobel klik **`swave-imirror.exe`** untuk menjalankan.
+5. Pada iPhone / iPad Anda:
+   - Buka **Control Center**.
+   - Tap ikon **Screen Mirroring / Pencerminan Layar**.
+   - Pilih **`swave-imirror`**.
 
-For building from source:
-- Windows 10 or Windows 11 (x64 / ARM64)
-- MSYS2 (UCRT64 environment for x64)
+---
+
+## Fitur Utama
+
+- **Zero-Config Portable**: Tidak perlu install dependensi tambahan, seluruh runtime Qt6, GStreamer, dan mDNS sudah terintegrasi.
+- **60 FPS Support**: Opsi target frame rate halus (30 FPS / 60 FPS).
+- **Latency Mode Selector**: Pilihan profil latensi (Stable, Balanced, Low Latency).
+- **Modern Dark UI**: Tampilan antarmuka native bergaya dark mode dengan kontrol konfigurasi langsung.
+- **System Tray Integration**: Berjalan ringan di latar belakang dengan tray icon dan notifikasi status.
+- **D3D11 & D3D12 Renderer**: Akselerasi render hardware Windows.
+- **Bluetooth LE Beacon**: Membantu deteksi instan oleh iOS di jaringan lokal.
+
+---
+
+## Build Sendiri (Developer / Advanced)
+
+Jika Anda ingin melakukan kompilasi dari source code:
+
+### Prasyarat
+- Windows 10 atau Windows 11 (x64 / ARM64)
+- [MSYS2](https://www.msys2.org/) (lingkungan UCRT64)
 - Qt 6 (Core, Gui, Widgets)
-- GStreamer 1.0 runtime & development packages
-- Python 3.11+ for Windows (for WinRT Bluetooth beacon build)
+- GStreamer 1.0 runtime & development package
+- Python 3.11+ (untuk WinRT Bluetooth beacon)
 
-## Building
-
+### Langkah Build
 ```powershell
-# Build and package portable bundle (x64)
+# Build dan buat bundle portable x64
 .\build.ps1 package -Architecture x64 -SkipInstaller
 ```
+File executable dan bundle portable akan dihasilkan di folder `out/x64/artifacts/`.
 
-Build outputs will be generated under `out/x64/artifacts/`.
+---
 
-## Configuration
+## Konfigurasi
 
-Settings are saved in:
+File konfigurasi runtime disimpan otomatis di:
 ```text
 %APPDATA%\Swave\swave-imirror\arguments.txt
 ```
 
-Machine-wide default fallback:
-```text
-%ProgramData%\swave-imirror\arguments.txt
-```
+---
 
 ## License
 
-Please see [LICENSE](./docs/LICENSE.rtf) for details.
+Lihat [LICENSE](./docs/LICENSE.rtf) untuk informasi lisensi.
