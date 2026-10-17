@@ -10,6 +10,7 @@
 #include <QProcess>
 #include <QCheckBox>
 #include <QMessageBox>
+#include <QLineEdit>
 
 class QMenu;
 class QAction;
@@ -38,6 +39,7 @@ private slots:
     void toggleBle(bool checked); // bluetooth
     void toggleForceFullscreen(bool checked);
     void onRendererChanged(int index);
+    void persistUserSettings();
 
 
 private:
@@ -49,6 +51,7 @@ private:
     void startBluetoothBeacon(const QString &path);
     void stopBluetoothBeacon();
     void applyRendererAndFullscreenArgs(QStringList &args);
+    void applyUserSettings(QStringList &args) const;
 
     QProcess *m_beacon = nullptr;
 
@@ -73,6 +76,10 @@ private:
     QAction *m_statusAction = nullptr;
 
     QCheckBox *m_autostartCheckbox = nullptr;
+    QLineEdit *m_nameEdit = nullptr;
+    QComboBox *m_fpsCombo = nullptr;
+    QComboBox *m_latencyCombo = nullptr;
+    QCheckBox *m_fpsDataCheckbox = nullptr;
     QPushButton *m_settingsBtn = nullptr;
     QPushButton *m_listargsBtn = nullptr;
     QPushButton *m_licenseBtn = nullptr;

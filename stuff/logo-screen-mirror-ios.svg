@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#1E1B4B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+
+    <!-- Glowing Accent Gradient -->
+    <linearGradient id="accentGrad" x1="200" y1="200" x2="824" y2="824" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#C084FC"/>
+    </linearGradient>
+
+    <!-- Inner Glass Gradient -->
+    <linearGradient id="glassGrad" x1="250" y1="250" x2="774" y2="774" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.03"/>
+    </linearGradient>
+
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- App Canvas Base -->
+  <rect x="48" y="48" width="928" height="928" rx="200" fill="url(#bgGrad)" stroke="url(#accentGrad)" stroke-width="6"/>
+
+  <!-- Ambient Glow Behind Elements -->
+  <circle cx="512" cy="512" r="320" fill="#6366F1" opacity="0.15" filter="url(#neonGlow)"/>
+
+  <!-- Outer Monitor Frame (Desktop Receiver) -->
+  <rect x="220" y="240" width="584" height="400" rx="28" fill="#1E293B" stroke="url(#accentGrad)" stroke-width="8" filter="url(#dropShadow)"/>
+  <rect x="244" y="264" width="536" height="328" rx="16" fill="#090D16"/>
+  <path d="M432 640 L400 740 H624 L592 640 Z" fill="#1E293B" stroke="url(#accentGrad)" stroke-width="4"/>
+  <rect x="360" y="740" width="304" height="20" rx="10" fill="#334155"/>
+
+  <!-- Mobile Phone Frame (Sender Device) Overlapping Monitor -->
+  <g filter="url(#dropShadow)">
+    <rect x="440" y="320" width="280" height="520" rx="44" fill="#0F172A" stroke="url(#accentGrad)" stroke-width="8"/>
+    <rect x="456" y="348" width="248" height="464" rx="30" fill="url(#glassGrad)"/>
+    <!-- Dynamic Island / Notch -->
+    <rect x="528" y="332" width="104" height="20" rx="10" fill="#000000"/>
+    <circle cx="616" cy="342" r="4" fill="#38BDF8"/>
+  </g>
+
+  <!-- Stream / Mirroring Wave Lines Connecting Devices -->
+  <g stroke="url(#accentGrad)" stroke-width="10" stroke-linecap="round" fill="none" filter="url(#neonGlow)">
+    <!-- Signal Arcs -->
+    <path d="M 320 400 A 120 120 0 0 1 400 320"/>
+    <path d="M 290 440 A 170 170 0 0 1 440 290"/>
+    <path d="M 260 480 A 220 220 0 0 1 480 260"/>
+    
+    <!-- Central Beam Transfer Symbol -->
+    <path d="M 340 450 L 460 450" stroke-dasharray="16 12"/>
+    <polygon points="480,450 450,435 450,465" fill="#38BDF8" stroke="none"/>
+  </g>
+
+  <!-- Wireless Sparkles -->
+  <path d="M 280 280 L 290 305 L 315 315 L 290 325 L 280 350 L 270 325 L 245 315 L 270 305 Z" fill="#38BDF8"/>
+  <path d="M 760 260 L 768 280 L 788 288 L 768 296 L 760 316 L 752 296 L 732 288 L 752 280 Z" fill="#C084FC" opacity="0.8"/>
+</svg>

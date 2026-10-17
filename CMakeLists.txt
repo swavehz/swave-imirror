@@ -11,7 +11,7 @@ find_package(Qt6 COMPONENTS Core Widgets REQUIRED)
 add_subdirectory(libuxplay)
 
 # the WIN32 flag here tells Windows this is a GUI app, not a Console app
-add_executable(uxplay-windows WIN32
+add_executable(swave-imirror WIN32
     src/main.cpp
     src/mainwindow.cpp
     src/airplayworker.cpp
@@ -19,12 +19,12 @@ add_executable(uxplay-windows WIN32
     src/resources.rc
 )
 
-target_link_libraries(uxplay-windows PRIVATE
+target_link_libraries(swave-imirror PRIVATE
     Qt6::Core
     Qt6::Widgets
     uxplay
 )
 
-target_include_directories(uxplay-windows PRIVATE
+target_include_directories(swave-imirror PRIVATE
     ${CMAKE_SOURCE_DIR}/libuxplay
 )

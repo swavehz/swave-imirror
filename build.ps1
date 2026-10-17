@@ -385,8 +385,8 @@ function Stage-Runtime {
         Out-Null
 
     Copy-Item `
-        (Join-Path $buildDir "uxplay-windows.exe") `
-        (Join-Path $stageDir "uxplay-windows.exe") `
+        (Join-Path $buildDir "swave-imirror.exe") `
+        (Join-Path $stageDir "swave-imirror.exe") `
         -Force
     Copy-Item `
         (Join-Path $beaconOutDir "dist\uxplay-bluetooth-beacon.exe") `
@@ -409,6 +409,10 @@ function Stage-Runtime {
         (Join-Path $stageDir "resources\icon.ico") `
         -Force
     Copy-Item `
+        (Join-Path $projectRoot "stuff\logo-screen-mirror-ios.png") `
+        (Join-Path $stageDir "resources\logo-screen-mirror-ios.png") `
+        -Force
+    Copy-Item `
         (Join-Path $projectRoot "stuff\uxplay_arguments_list.txt") `
         (Join-Path $stageDir "resources\uxplay_arguments_list.txt") `
         -Force
@@ -425,7 +429,7 @@ function Stage-Runtime {
             "--no-translations",
             "--no-compiler-runtime",
             "--dir", $stageDir,
-            (Join-Path $stageDir "uxplay-windows.exe")
+            (Join-Path $stageDir "swave-imirror.exe")
         )
 
     $gstPluginDir = Join-Path $prefix "lib\gstreamer-1.0"

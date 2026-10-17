@@ -4,26 +4,26 @@
      
   <!-- version number is mayor.minor.zero.uxplayversion -->
   <Package
-    Id="uxplaywindows"
-    Name="uxplay-windows"
-    Manufacturer="leapbtw"
+    Id="swaveimirror"
+    Name="swave-imirror"
+    Manufacturer="Swave"
     Version="2.1.0.1736"
     UpgradeCode="00000eaf-dcca-458f-ab77-aaef11ce4ba8"
     Language="1033"
     Scope="perMachine">
 
     <MajorUpgrade
-      DowngradeErrorMessage="A newer version of uxplay-windows is already installed." />
+      DowngradeErrorMessage="A newer version of swave-imirror is already installed." />
     <WixVariable Id="WixUILicenseRtf" Value="./docs/LICENSE.rtf" />
     <MediaTemplate EmbedCab="yes" />
 
     <ui:WixUI Id="WixUI_FeatureTree" />
 
     <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="INSTALLDIR" Name="uxplay-windows" />
+      <Directory Id="INSTALLDIR" Name="swave-imirror" />
     </StandardDirectory>
 
-    <Feature Id="MainFeature" Title="uxplay-windows" Level="1">
+    <Feature Id="MainFeature" Title="swave-imirror" Level="1">
       <ComponentGroupRef Id="AppFiles" />
       <ComponentGroupRef Id="AppExe" />
       <ComponentRef Id="ProgramMenuShortcutComponent" />
@@ -39,7 +39,7 @@
 
     <ComponentGroup Id="AppFiles" Directory="INSTALLDIR">
       <Files Include="./release/**">
-        <Exclude Files="./release/uxplay-windows.exe;**/*.pdb;**/uxplay-windows.exe" />
+        <Exclude Files="./release/swave-imirror.exe;**/*.pdb;**/swave-imirror.exe" />
       </Files>
     </ComponentGroup>
 
@@ -47,7 +47,7 @@
       <Component Id="AppExeComponent"
                  Guid="e5f23b9b-b726-4738-85ba-63892cff1924">
         <File Id="AppExeFile"
-              Source="./release/uxplay-windows.exe"
+              Source="./release/swave-imirror.exe"
               KeyPath="yes" />
       </Component>
     </ComponentGroup>
@@ -66,9 +66,9 @@
         Value="1"
         KeyPath="yes" />
       <Shortcut
-        Name="uxplay-windows"
+        Name="swave-imirror"
         Directory="ProgramMenuFolder"
-        Target="[INSTALLDIR]uxplay-windows.exe"
+        Target="[INSTALLDIR]swave-imirror.exe"
         WorkingDirectory="INSTALLDIR"
         Advertise="no" />
     </Component>
@@ -84,9 +84,9 @@
         Value="1"
         KeyPath="yes" />
       <Shortcut
-        Name="uxplay-windows"
+        Name="swave-imirror"
         Directory="DesktopFolder"
-        Target="[INSTALLDIR]uxplay-windows.exe"
+        Target="[INSTALLDIR]swave-imirror.exe"
         WorkingDirectory="INSTALLDIR"
         Advertise="no" />
     </Component>

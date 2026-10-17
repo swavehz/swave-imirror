@@ -70,7 +70,10 @@ if (-not $msbuild -and (Test-Path -LiteralPath $vswhere)) {
 
 if (-not $msbuild) {
     $candidates = Get-ChildItem `
-        -Path "$env:ProgramFiles\Microsoft Visual Studio\2022\*\MSBuild\Current\Bin\MSBuild.exe" `
+        -Path @(
+            "$env:ProgramFiles\Microsoft Visual Studio\2022\*\MSBuild\Current\Bin\MSBuild.exe",
+            "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\*\MSBuild\Current\Bin\MSBuild.exe"
+        ) `
         -ErrorAction SilentlyContinue |
         Select-Object -First 1
     if ($candidates) {
@@ -83,6 +86,19 @@ if (-not $msbuild) {
         "Bonjour SDK is missing and MSBuild was not found. " +
         "Install Visual Studio Build Tools with the C++ workload, then retry."
     )
+}
+
+# Import the native x64 MSVC/Windows SDK environment. Without this, MSBuild
+# can be found but standard headers such as stddef.h are not on INCLUDE.
+$vcvars = Join-Path ${env:ProgramFiles(x86)} `
+    "Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
+if (Test-Path -LiteralPath $vcvars) {
+    $envDump = & cmd.exe /s /c "call `"$vcvars`" >nul && set"
+    foreach ($line in $envDump) {
+        if ($line -match '^([^=]+)=(.*)$') {
+            [Environment]::SetEnvironmentVariable($Matches[1], $Matches[2])
+        }
+    }
 }
 
 $architectureOutDir = Join-Path $ProjectRoot "out\$Architecture"
